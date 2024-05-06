@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { EveryEventSubscriber } from 'src/subscribers/every.event.subscriber';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Injectable()
@@ -16,6 +17,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         autoLoadEntities: true,
         logging: JSON.parse(this.configService.get<string>('LOGGING')),
         namingStrategy: new SnakeNamingStrategy(),
+        subscribers: [EveryEventSubscriber],
       };
     } else if (process.env.NODE_ENV === 'production') {
       return {
