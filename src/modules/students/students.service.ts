@@ -23,6 +23,17 @@ export class StudentsService {
           {
             select: {
               id: true,
+              name: true,
+              surname: true,
+              stdNumber: true,
+              grades: {
+                id: true,
+                value: true,
+                code: true,
+              },
+            },
+            relations: {
+              grades: true,
             },
             where: { stdNumber: studentDto.stdNumber },
           },
@@ -37,6 +48,7 @@ export class StudentsService {
           studentInstance = studentExist;
         }
         //object compositon solid principle for reusable coding
+        //When multiple entries exist for a single course, the API should calculate and store the average grade for that course.
         const updatedGrades = SummaryCalculator.staticFromGrades(
           studentDto.grades,
         ).buildReport();
@@ -50,7 +62,7 @@ export class StudentsService {
           transactionalEntityManager,
         );
 
-        return updatedGrades;
+        return studentInstance; // please look at students.controller for searialization interceptor.
       },
     );
   }
