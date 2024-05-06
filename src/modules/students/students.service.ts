@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { StudentDto } from './dto/student.dto';
 import { StudentRepository } from './students.repository';
 import { SummaryCalculator } from 'src/object-composition/index';
