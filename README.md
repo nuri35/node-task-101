@@ -19,55 +19,93 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
+ 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+As part of the school council, we are seeking to develop a REST API to manage and store student data in a database. This includes names, student numbers, and their corresponding grades by course code. When multiple entries exist for a single course, the API should calculate and store the average grade for that course. 
 
-## Installation
 
-```bash
-$ npm install
+## Project File Structure
+
+```
+└── src
+    ├── app.module.ts
+    ├── main.ts
+    ├── data-sources.ts
+    ├── modules
+    │   ├── students
+    │   │   ├── students.module.ts
+    │   │   ├── students.controller.ts
+    │   │   ├── students.service.ts
+    ├       ├── students.repository.ts
+    ├       ├── grade.entity.ts
+    ├       ├── student.entity.ts
+    │   │   ├── dto
+    │   │   │   └── student.dto.ts
+    │   │   └── response-dto
+    │   │       └── student.res.dto.ts
+    │   ├── users
+    │   │   ├── users.module.ts
+    │   │   ├── users.controller.ts
+    │   │   └── users.service.ts
+    │   └── ...
+    ├── shared
+    │   ├── shared.module.ts
+    │   └── ...
+    └── config
+        └── typeorm.config.ts
+        interceptors
+        └──  serialize.interceptor.ts
 ```
 
-## Running the app
+### Endpoints -
 
-```bash
-# development
-$ npm run start
+1. **Students Endpoint:**
+  - **Endpoint:**   `/api/v1/students`
+  - **Method:**     `POST`
+  - **Request Body:** 
+    ```json
+    {
+      "name": "John Doe",
+      "surname": "Yilmaz", 
+      "studentNumber": "123456",
+      "grades": [
+        {
+         "code": "MT101", 
+         "value": 90 
+        },
+        {
+          "code": "CSC102",
+          "value": 80
+        }
+      ]
+    }
+    ```
 
-# watch mode
-$ npm run start:dev
+## Database Schema on Authentication
 
-# production mode
-$ npm run start:prod
-```
+  | Entity        | Fields                                                      | Relationships                                      |
+  |---------------|-------------------------------------------------------------|----------------------------------------------------|
+  | StudentEntity    | id, name, surname, stdNumber,  |  One-to-Many with GradeEntity  | 
+  | GradeEntity   | id, code, value,   | ManyToOne with StudentEntity | 
+ 
 
-## Test
+ ## Features with TypeORM
 
-```bash
-# unit tests
-$ npm run test
+- **Custom Repositories:** Custom repositories were utilized for database operations.
 
-# e2e tests
-$ npm run test:e2e
+- **Transactions:** Transactions were used to manage operations atomically.
 
-# test coverage
-$ npm run test:cov
-```
+- **Entity Listeners and Subscribers:** Entity listeners and subscribers were employed to define custom behaviors that will automatically execute during database operations.
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Response Models Using DTOs
 
-## Stay in touch
+- **DTOs for Response:** Data Transfer Objects (DTOs) were employed for defining response models.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  - Objects specified in DTOs: The objects defined in DTOs were returned as responses, providing a structured and tailored data format to clients.
 
+   
 ## License
 
 Nest is [MIT licensed](LICENSE).
