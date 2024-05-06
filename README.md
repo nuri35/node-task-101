@@ -68,7 +68,7 @@ As part of the school council, we are seeking to develop a REST API to manage an
     {
       "name": "John Doe",
       "surname": "Yilmaz", 
-      "studentNumber": "123456",
+      "stdNumber": "123456",
       "grades": [
         {
          "code": "MT101", 
@@ -112,19 +112,17 @@ As part of the school council, we are seeking to develop a REST API to manage an
     - ### Package installation
         - When we run our project with Docker in the production environment or locally, global packages will be installed automatically. Entering these commands is sufficient only for our team members who will run it for the first time locally without docker.
             - ``git clone or git pull``
-            - ``npm install -g win-node-env``
-
-            - ``npm  i -g tslib``
-
             - ``npm i``
+            - please check the `.env.development` file for the environment variables. if it not exist please create it.
+            - ``npm run start:dev``
 
-    - ### Requirements
-
-        - To start the system, implement the environment files and configuration files. Additionally, add the following values to the environment file.
-        - For security reasons, we do not display the values inside the .env files. By downloading the application from this link https://www.gpg4win.org/ and entering the password for the encrypted .env file on your local machine, you can make it readable again.
-
-    
-    
+        - requiremet env value for local development
+           - DB_NAME=`dev.sqlite`
+           - SYNCHRONIZE=`true`
+           - DB_TYPE=`sqlite`
+           - LOGGING=`true`
+             
+       
     #2:) for local development with docker
     
     - ### Requirements
@@ -136,12 +134,42 @@ As part of the school council, we are seeking to develop a REST API to manage an
     ``
 
 
-## Author
 
-👤 **Nurettin Şen**
+### Commonly used commands in docker-compose-dev:
+- `docker-compose up --build` - Build the containers and start them.
+- `docker-compose up` - Start the containers.
+- `docker-compose down` - Stop the containers.
+- `docker-compose logs` - View output from containers.
+- `docker-compose exec <service> sh` - Access the shell of a running container.
+ 
 
 
+<!-- CONTRIBUTING -->
+## Contributing
 
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+ 
+
+<!-- LICENSE -->
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Nurettin Şen - [ ](gmail.com) - nurie487@gmail.com
+ 
+
+ 
