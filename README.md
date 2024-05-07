@@ -82,6 +82,13 @@ As part of the school council, we are seeking to develop a REST API to manage an
     }
     ```
 
+
+## Swagger Documentation
+
+- **Swagger UI:** The project's API documentation is generated using Swagger. Swagger is a tool used to automatically generate and serve API documentation.  
+
+-  **URL:** `http://localhost:5000/api/v1/docs`
+
 ## Database Schema on Authentication
 
   | Entity        | Fields                                                      | Relationships                                      |
