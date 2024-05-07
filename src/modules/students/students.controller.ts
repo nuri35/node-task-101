@@ -1,5 +1,4 @@
 import { Controller, Post, Body } from '@nestjs/common';
-
 import { StudentDto } from './dto/student.dto';
 import { StudentsService } from './students.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
