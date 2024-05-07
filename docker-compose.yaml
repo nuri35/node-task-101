@@ -19,8 +19,8 @@ services:
       - database
 
   database:
-    image: sqlite:latest
-    container_name: sqlite_db
+    image: keinos/sqlite3
+
     volumes:
       - ./data:/data
     networks:
