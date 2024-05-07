@@ -89,7 +89,7 @@ As part of the school council, we are seeking to develop a REST API to manage an
 
 -  **URL:** `http://localhost:5000/api/v1/docs`
 
-## Database Schema on Authentication
+## Database Schema  
 
   | Entity        | Fields                                                      | Relationships                                      |
   |---------------|-------------------------------------------------------------|----------------------------------------------------|
