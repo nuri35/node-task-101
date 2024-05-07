@@ -16,6 +16,7 @@ export class StudentsService {
 
   async create(studentDto: StudentDto) {
     try {
+      //***NOT: */ Due to the requirement of having only one endpoint within the service, if there is no student, it saves and continues; if there is a student, it continues without saving under the relevant student number. Then, before saving the grades, if there are multiple instances of the same course code in the 'grades' array provided as 'grades', it calculates the average and saves the average grade. In doing so, I leverage object composition best practices. Then, I associate it with the student and save it to the 'grades' table. You can delve into this further for a detailed examination.
       return await this.dataSource.transaction(
         async (transactionalEntityManager) => {
           let studentInstance: Student;
