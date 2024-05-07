@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import { GlobalExceptionFilter } from './shared/http-exception.filter';
 import * as morgan from 'morgan';
 import { TransformInterceptor } from './interceptors/transform.interceptor';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -24,6 +25,16 @@ async function bootstrap() {
     res.removeHeader('date');
     next();
   });
+
+  const config = new DocumentBuilder()
+    .setTitle('NestJS API')
+    .setDescription('The NestJS API description')
+    .setVersion('1.0')
+    .addTag('nestjs')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/v1/docs', app, document);
+
   await app.listen(5000);
 }
 bootstrap();
