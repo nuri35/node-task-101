@@ -18,6 +18,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         logging: JSON.parse(this.configService.get<string>('LOGGING')),
         namingStrategy: new SnakeNamingStrategy(),
         subscribers: [EveryEventSubscriber],
+        host: this.configService.get<string>('DB_HOST'),
       };
     } else if (process.env.NODE_ENV === 'production') {
       return {

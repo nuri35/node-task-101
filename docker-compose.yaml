@@ -10,6 +10,7 @@ services:
     environment:
       - DB_NAME=dev.sqlite
       - SYNCHRONIZE=true
+      - DB_HOST=database
       - DB_TYPE=sqlite
       - LOGGING=true
     networks:
